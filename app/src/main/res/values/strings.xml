@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Enigma</string>
+    <string name="textWheel">旋轉盤</string>
+    <string name="textInput">輸入：</string>
+    <string name="editInput">(轉換前)</string>
+    <string name="textOutput">輸出：</string>
+    <string name="editOutput">(轉換後)</string>
+    <string name="buttonMemory">名稱</string>
+    <string name="buttonContent">密碼</string>
+    <string name="message">更新密碼？</string>
+    <string name="buttonMemory1">記憶1</string>
+    <string name="buttonMemory2">記憶2</string>
+    <string name="buttonMemory3">記憶3</string>
+    <string name="buttonTranslation">轉換</string>
+    <string name="memoryTitle">設定</string>
+    <string name="memoryOk">確認</string>
+    <string name="memoryCancel">取消</string>
+
+</resources>
