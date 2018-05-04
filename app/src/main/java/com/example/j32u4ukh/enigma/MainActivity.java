@@ -5,14 +5,10 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.NumberPicker;
-import android.widget.Toast;
-
-import static com.example.j32u4ukh.enigma.Enigma.wheel;
 
 public class MainActivity extends AppCompatActivity {
     NumberPicker numberLeft, numberMedium, numberRight;
@@ -93,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
                         enigma += c;
                     }
                     wheel(rmlRML);
-                };
+                }
                 editOutput.setText(enigma);
                 break;
         }
@@ -157,23 +153,23 @@ public class MainActivity extends AppCompatActivity {
             R = 0;
         }else{
             R += 1;
-        };
+        }
         if(r % 10 == 0){
             m += 1;
             if(M == 10){
                 M = 0;
             }else{
                 M += 1;
-            };
-        };
+            }
+        }
         if(r % 100 == 0 && m != 0){
             l += 1;
             if(L == 10){
                 L = 0;
             }else{
                 L += 1;
-            };
-        };
+            }
+        }
         rmlRML[0] = r;
         rmlRML[1] = m;
         rmlRML[2] = l;
@@ -197,68 +193,64 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 test[i] = old[i];
             }
-        };
+        }
         return test;
-    };
+    }
 
     // 旋轉盤R
     static char EncodeR(char c){
         int w = rmlRML[3] % 10;
-        char har = 'c';
+        char har;
         char[] letterOldR = {'T', 'A', 'a', '4', '6', 'u', '8', 'L', '1', 'q', 'y', 'Q', 'p', 'H', '5', '3', 'C', 'r', 'O', '2', 'h', 'W', 'B', 'E', '7', 'l', 'v', 't', 'z', 'G', 'e', 'n', 'P', 'R', '9', 'S', 'V', 'g', 'I', 'j', 'w', '0', 'X', 'd', 'f', 'i', 's', 'x', 'N', 'k', 'F', 'm', 'U', 'J', 'o', 'b', 'Y', 'K', 'M', 'D', 'c', 'Z'};
         if(w == 0){
             har = transform(letterOldR, c);
         }else{
-            char[] letterNewR = new char[letterOldR.length];
-            letterNewR = change(letterOldR, w);
+            char[] letterNewR = change(letterOldR, w);
             har = transform(letterNewR, c);
-        };
+        }
         return har;
-    };
+    }
 
     // 旋轉盤M
     static char EncodeM(char c){
         int w = rmlRML[4] % 10;
-        char har = 'c';
+        char har;
         char[] letterOldM = {'K', 'V', '8', 'A', '1', 'r', '0', 'J', 'h', 'N', 'Q', 'P', 'q', 'F', 'o', 't', '7', 'U', '4', 'X', 'j', '9', 'x', 'k', 'v', 'e', 'T', '5', 'b', 'g', 'f', 'Y', 'L', '3', 'u', 'W', 'D', 'G', 'w', 'R', 'I', 'O', 'l', 'E', 'B', 'd', '2', 'Z', 's', 'S', 'z', 'i', '6', 'C', 'n', 'm', 'M', 'y', 'p', 'a', 'c', 'H'};
         if(w == 0){
             har = transform(letterOldM, c);
         }else{
-            char[] letterNewM = new char[letterOldM.length];
-            letterNewM = change(letterOldM, w);
+            char[] letterNewM = change(letterOldM, w);
             har = transform(letterNewM, c);
-        };
+        }
         return har;
-    };
+    }
 
     // 旋轉盤L
     static char EncodeL(char c){
         int w = rmlRML[5] % 10;
-        char har = 'c';
+        char har;
         char[] letterOldL = {'i', 'T', 'C', 'O', 'E', '1', 's', 'M', 'F', 'P', 'j', 'L', 'h', 'S', 'k', 'Y', 'I', 'A', 'x', 'y', 'm', '4', 'w', '0', 'b', 'J', 'g', 'N', '6', 'Q', 'o', 'B', '7', 'd', 'v', 'H', '2', 'D', 'f', 'n', 'G', 'p', 'X', 'u', 'e', 'R', 'z', 'U', 'Z', '5', 'K', 'c', 'l', 'V', '8', '3', 't', '9', 'W', 'q', 'a', 'r'};
         if(w == 0){
             har = transform(letterOldL, c);
         }else{
-            char[] letterNewL = new char[letterOldL.length];
-            letterNewL = change(letterOldL, w);
+            char[] letterNewL = change(letterOldL, w);
             har = transform(letterNewL, c);
-        };
+        }
         return har;
-    };
+    }
 
     //反射板
     private static char Reflection(char c){
-        char har = 'c';
+        char har;
         char[] letter = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
         har = transform(letter, c);
         return har;
-    };
+    }
 
     // 彙整加密&旋轉
     public static char Encode(char c){
-        char har = EncodeR(EncodeM(EncodeL(Reflection(EncodeL(EncodeM(EncodeR(c)))))));
-        return har;
-    };
+        return EncodeR(EncodeM(EncodeL(Reflection(EncodeL(EncodeM(EncodeR(c)))))));
+    }
 
     // 返回索引值
     private static int findIndex(char[] letter, char c){
@@ -266,10 +258,10 @@ public class MainActivity extends AppCompatActivity {
         for(int i = 0; i < letter.length; i++){
             if(letter[i] == c){
                 n = i;
-            };
-        };
+            }
+        }
         return n;
-    };
+    }
 
     // 交換功能
     private static char transform(char[] letter, char c){
@@ -278,9 +270,9 @@ public class MainActivity extends AppCompatActivity {
             c = letter[i + 1];
         }else{
             c = letter[i - 1];
-        };
+        }
         return c;
-    };
+    }
 }
 
 /*
